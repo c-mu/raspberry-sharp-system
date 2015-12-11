@@ -3,6 +3,7 @@
 using System;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 #endregion
 
@@ -18,8 +19,9 @@ namespace Raspberry.Timers
         private TimeSpan delay;
         private TimeSpan interval;
         private Action action;
-
-        private Thread thread;
+        
+        private Task task;
+        private CancellationTokenSource tokenSource;
 
         private static readonly int nanoSleepOffset = Calibrate();
 
@@ -128,16 +130,9 @@ namespace Raspberry.Timers
         {
             if (startDelay.TotalMilliseconds > uint.MaxValue/1000)
                 throw new ArgumentOutOfRangeException("startDelay", startDelay, "Delay must be lower than or equal to uint.MaxValue / 1000");
-
-            lock (this)
-            {
-                if (thread != null) 
-                    return;
-                
-                delay = startDelay;
-                thread = new Thread(ThreadProcess);
-                thread.Start();
-            }
+            tokenSource = new CancellationTokenSource();
+            task = new Task(ThreadProcess, tokenSource.Token);
+            task.Start();
         }
 
         /// <summary>
@@ -145,15 +140,7 @@ namespace Raspberry.Timers
         /// </summary>
         public void Stop()
         {
-            lock (this)
-            {
-                if (thread == null) 
-                    return;
-
-                if (thread != Thread.CurrentThread)
-                    thread.Abort();
-                thread = null;
-            }
+            tokenSource.Cancel();
         }
 
         #endregion
@@ -184,10 +171,8 @@ namespace Raspberry.Timers
 
         private void ThreadProcess()
         {
-            var thisThread = thread;
-
             Sleep(delay);
-            while (thread == thisThread)
+            while (!tokenSource.IsCancellationRequested)
             {
                 (Action ?? NoOp)();
                 Sleep(interval);

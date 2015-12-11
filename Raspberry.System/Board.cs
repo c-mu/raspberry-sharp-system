@@ -187,7 +187,7 @@ namespace Raspberry
                     {
                         var key = l.Substring(0, separator).Trim();
                         var val = l.Substring(separator + 1).Trim();
-                        if (string.Equals(key, "processor", StringComparison.InvariantCultureIgnoreCase))
+                        if (string.Equals(key, "processor"))
                             suffix = "." + val;
 
                         settings.Add(key + suffix, val);

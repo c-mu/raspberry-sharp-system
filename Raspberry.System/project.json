@@ -1,0 +1,30 @@
+﻿{
+  "title": "Raspberry.System",
+  "version": "1.2.0-*",
+  "description": "Raspberry.System is a DNX assembly available for Mono/.NET and CoreCLR providing access to Raspberry Pi system features.\n\nIt is an initiative of the Raspberry# Community, aimed at  providing tools  and information  concerning use  of Raspberry Pi boards  with Mono/.NET  framework.\n Visit  project [ Github site ]  (https: //github.com/raspberry-sharp/raspberry-sharp-system/) for documentation and samples.",
+  "authors": [ "Eric Bézine" ],
+  "owners": [ "Raspberry-Sharp" ],
+  "tags": [ "Raspberry", "Pi", "Mono", "CoreCLR", "DNX", "System", "Timers" ],
+  "projectUrl": "https://github.com/raspberry-sharp/raspberry-sharp-system/wiki",
+  "licenseUrl": "http://opensource.org/licenses/GPL-2.0",
+  "iconUrl": "https://raw.github.com/raspberry-sharp/raspberry-sharp-system/master/Icon.png",
+  "requireLicenseAcceptance": true,
+  "summary": "Raspberry.System is a DNX assembly available for Mono/.NET and CoreCLR providing access to Raspberry Pi system features.",
+  "language": "en-US",
+
+  "frameworks": {
+    "dnx451": {},
+    "dnxcore50": {
+      "dependencies": {
+        "Microsoft.CSharp": "4.0.1-beta-23516",
+        "System.Collections": "4.0.11-beta-23516",
+        "System.Linq": "4.0.1-beta-23516",
+        "System.Runtime": "4.0.21-beta-23516",
+        "System.Threading": "4.0.11-beta-23516",
+        "System.Threading.Thread": "4.0.0-rc2-23530",
+        "System.Threading.Timer": "4.0.1-rc2-23530",
+        "System.IO.FileSystem": "4.0.1-rc2-23530"
+      }
+    }
+  }
+}
