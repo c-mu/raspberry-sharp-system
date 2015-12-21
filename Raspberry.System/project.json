@@ -1,6 +1,6 @@
 ﻿{
   "title": "Raspberry.System",
-  "version": "1.2.0-*",
+  "version": "2.0.0-*",
   "description": "Raspberry.System is a DNX assembly available for Mono/.NET and CoreCLR providing access to Raspberry Pi system features.\n\nIt is an initiative of the Raspberry# Community, aimed at  providing tools  and information  concerning use  of Raspberry Pi boards  with Mono/.NET  framework.\n Visit  project [ Github site ]  (https: //github.com/raspberry-sharp/raspberry-sharp-system/) for documentation and samples.",
   "authors": [ "Eric Bézine" ],
   "owners": [ "Raspberry-Sharp" ],
