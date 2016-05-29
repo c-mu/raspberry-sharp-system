@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceRoot}/Raspberry.System/bin/Debug/netcoreapp1.0/Raspberry.System.dll",
+            "args": [],
+            "cwd": "${workspaceRoot}/Raspberry.System",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processName": "<example>"
+        }
+    ]
+}
